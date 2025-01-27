@@ -1,0 +1,31 @@
+[project]
+name = "page-tracker"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Michael Okarimia",email = "git@michaelokarimia.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+	"Flask",
+	"redis",
+]
+
+[project.optional-dependencies]
+dev = [
+	"bandit",
+    "black",
+    "flake8",
+    "isort",
+    "pylint",
+	"pytest",
+	"pytest-timeout",
+	"requests",
+]
+
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
