@@ -22,5 +22,6 @@ def index():
 def redis():
     return Redis.from_url(os.getenv("REDIS_URL", "redis://localhost:6379"))
 
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run()

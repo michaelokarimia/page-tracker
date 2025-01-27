@@ -24,9 +24,8 @@ RUN python -m pip install . -c constraints.txt && \
     python -m isort src/ --check && \
     python -m black src/ --check --quiet && \
     python -m pylint src/ --disable=C0114,C0116,R1705 && \
-    python -m bandit -r src/ --quiet \
-    python - pip wheel --wheel-dir dist/ . -c constraints.txt
-
+    python -m bandit -r src/ --quiet && \
+    python -m pip wheel --wheel-dir dist/ . -c constraints.txt
 
 FROM python:3.10.16-slim-bullseye
 
@@ -44,7 +43,7 @@ ENV PATH="$VIRTUALENV/bin:$PATH"
 COPY --from=builder /home/realpython/dist/page_tracker*.whl /home/realpython
 
 RUN python -m pip install --upgrade pip setuptools && \
-    python -m pip install --no-cache-dir -c page_tracker*.whl
+    python -m pip install --no-cache-dir page_tracker*.whl
 
 CMD ["flask", "--app", "page_tracker.app", "run", \
      "--host", "0.0.0.0", "--port", "5000"]
