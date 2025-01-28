@@ -5,9 +5,10 @@ on:
     branches:
       - main
   push:
+    paths-ignore:
+      - 'README.md'
     branches:
       - main
-
 jobs:
   build:
     name: Build Docker image and run end-to-end tests
